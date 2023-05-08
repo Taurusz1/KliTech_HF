@@ -37,7 +37,7 @@
 		<div>
 			<h1>Klitech Synonym Dictionary</h1>
 			<form>
-				<textarea id="synonymSourceTextBox" name="synonymSourceTextBox" class="textbox" placeholder="Enter word here"></textarea>
+				<textarea class="textbox" id="synonymSourceTextBox" name="synonymSourceTextBox" [(ngModel)]="synonymSearch"  placeholder="Enter word here"></textarea>
 			</form>
 		</div>
 		<div *ngIf="synonymData">
@@ -47,7 +47,7 @@
 			</form>
 		</div>
 	</div>
-  <button type="submit" class="btn">Find Synonyms</button>
+  <button class="btn" (click)="onSubmit()">Find Synonyms</button>
 </body>
 </html>
 <router-outlet></router-outlet>

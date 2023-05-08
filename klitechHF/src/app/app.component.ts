@@ -9,16 +9,19 @@ import { SynonymData } from './models/synonym.model';
 })
 export class AppComponent implements OnInit{
   synonymData?: SynonymData;
-
+  synonymSearch = '';
   constructor(private synonymService: SynonymService){}
 
   ngOnInit(): void {
-    this.synonymService.getSynonyms('car').subscribe({
+    
+  }
+  
+  onSubmit(){
+    this.synonymService.getSynonyms(this.synonymSearch).subscribe({
       next: (response) => {
         console.log(response);
         this.synonymData = response;
       }
     });
   }
-  
 }
