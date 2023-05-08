@@ -8,7 +8,7 @@
 		<div>
 			<h1>Klitech Translate</h1>
 			<form>
-				<textarea id="textbox1" name="textbox1" class="textbox" placeholder="Enter text here"></textarea>
+				<textarea class="textbox" id="sourceLangTextBox" name="sourceLangTextBox" [(ngModel)]="sourceText" placeholder="Enter text here"></textarea>
         <div class="row">
           <label class="row-label">Source Language</label>
           <select name="from_lang" class="lang-select">
@@ -21,7 +21,7 @@
 		<div>
 			<h1>&nbsp;</h1>
 			<form>
-				<textarea id="textbox2" name="textbox2" class="textbox" placeholder="Translation"></textarea>
+				<textarea class="textbox" id="destinationLangTextBox" name="destinationLangTextBox" placeholder="Translation">{{resultText}}</textarea>
         <div class="row">
           <label class="row-label">Destination Language</label>
           <select name="to_lang" class="lang-select">
@@ -32,12 +32,12 @@
 			</form>
 		</div>
 	</div>
-  <button type="submit" class="btn">Translate</button>
+  <button class="btn" (click)="onSubmitTran()">Translate</button>
   <div class="container">
 		<div>
 			<h1>Klitech Synonym Dictionary</h1>
 			<form>
-				<textarea class="textbox" id="synonymSourceTextBox" name="synonymSourceTextBox" [(ngModel)]="synonymSearch"  placeholder="Enter word here"></textarea>
+				<textarea class="textbox" id="synonymSourceTextBox" name="synonymSourceTextBox" [(ngModel)]="synonymSearch" placeholder="Enter word here"></textarea>
 			</form>
 		</div>
 		<div *ngIf="synonymData">
@@ -47,7 +47,7 @@
 			</form>
 		</div>
 	</div>
-  <button class="btn" (click)="onSubmit()">Find Synonyms</button>
+  <button class="btn" (click)="onSubmitSyn()">Find Synonyms</button>
 </body>
 </html>
 <router-outlet></router-outlet>
