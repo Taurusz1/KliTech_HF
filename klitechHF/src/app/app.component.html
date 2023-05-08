@@ -37,13 +37,13 @@
 		<div>
 			<h1>Klitech Synonym Dictionary</h1>
 			<form>
-				<textarea id="textbox3" name="textbox3" class="textbox" placeholder="Enter word here"></textarea>
+				<textarea id="synonymSourceTextBox" name="synonymSourceTextBox" class="textbox" placeholder="Enter word here"></textarea>
 			</form>
 		</div>
-		<div>
+		<div *ngIf="synonymData">
 			<h1>&nbsp;</h1>
 			<form>
-				<textarea id="textbox4" name="textbox4" class="textbox" placeholder="Synonyms"></textarea>
+				<textarea id="synonymResultTextBox" name="synonymResultTextBox" class="textbox" placeholder="Synonyms">{{synonymData.synonyms}}</textarea>
 			</form>
 		</div>
 	</div>

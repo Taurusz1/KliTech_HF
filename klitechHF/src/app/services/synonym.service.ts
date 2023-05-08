@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environment/environment';
+import { environment } from 'src/app/environment/environment';
 import { SynonymData } from '../models/synonym.model';
 import {Observable} from 'rxjs';
 
