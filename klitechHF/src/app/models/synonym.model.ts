@@ -1,5 +1,4 @@
 export interface SynonymData {
-    word: string
-    synonyms: string[]
-  }
-  
+  word: string;
+  synonyms: string[];
+}
