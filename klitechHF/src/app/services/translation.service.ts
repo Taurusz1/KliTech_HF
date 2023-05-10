@@ -7,11 +7,22 @@ import { environment } from '../environment/environment';
 })
 export class TranslationService {
   constructor(private http: HttpClient) { }
+  options = {
+  method: 'POST',
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-RapidAPI-Key': environment.TranslationKey,
+    'X-RapidAPI-Host': environment.TranslationHost
+  }),
+  body: {
+    from: 'auto',
+    to: 'hu',
+    e: '',
+    q: 'car'
+  }
 
-  translateText(text: string, targetLang: string) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    const body = `key=${environment.YandexAPIKey}&text=${encodeURIComponent(text)}&lang=${targetLang}`;
-
-    return this.http.post(environment.YandexTranslateAPIURL, body, { headers });
+  }
+  translateText(text: string, targetLang: string){
+    return this.http.post(environment.TranslationURL, this.options.body, { headers:this.options.headers });
   }
 }
