@@ -31,10 +31,21 @@ export class TranslationService {
       q: text,
     };
     return this.http.post<string[]>(
-      environment.TranslationURL,
+      environment.TranslationURL +'/t',
       this.options.body,
       {
         headers: this.options.headers,
+      }
+    );
+  }
+
+  getLanguages():Observable<string> {
+    return this.http.get<string>(
+      environment.TranslationURL + '/languages',
+      {
+        headers: new HttpHeaders()
+          .set(environment.XRapidAPIHostHeaderName, environment.TranslationHost)
+          .set(environment.XRapidAPIKeyHeaderName, environment.TranslationKey),
       }
     );
   }
