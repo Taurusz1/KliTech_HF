@@ -33,15 +33,8 @@
             id="destinationLangTextBox"
             name="destinationLangTextBox"
             placeholder="Translation"
-            >{{ translationResult }}</textarea
+            >{{ translationResult.data[0][0] }}</textarea
           >
-          <textarea
-            *ngIf="!translationResult"
-            class="textbox"
-            id="destinationLangTextBox"
-            name="destinationLangTextBox"
-            placeholder="Translation"
-          ></textarea>
           <div class="row">
             <label class="row-label">Destination Language</label>
             <select name="to_lang" class="lang-select">

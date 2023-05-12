@@ -23,14 +23,14 @@ export class TranslationService {
       q: 'Error',
     },
   };
-  translateText(text: string, targetLang: string): Observable<Translation> {
+  translateText(text: string, targetLang: string): Observable<string[]> {
     this.options.body = {
       from: 'auto',
       to: 'hu',
       e: '',
       q: text,
     };
-    return this.http.post<Translation>(
+    return this.http.post<string[]>(
       environment.TranslationURL,
       this.options.body,
       {

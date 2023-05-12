@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   synonymSearch = '';
   synonymData?: SynonymData;
   translationSource = '';
-  translationResult?: Translation;
+  translationResult?: Translation = {
+    data: []
+  };
   langCode = 'hu';
   constructor(
     private synonymService: SynonymService,
@@ -31,13 +33,12 @@ export class AppComponent implements OnInit {
     });
   }
   onSubmitTran() {
-    this.translationService
+   this.translationService
       .translateText(this.translationSource, this.langCode)
       .subscribe({
         next: (response) => {
-          console.log(response);
-          this.translationResult = response;
-          this.translationResult.data.pop();
+          this.translationResult!.data = response;
+          console.log(this.translationResult!.data[0][0]);
         },
       });
   }
