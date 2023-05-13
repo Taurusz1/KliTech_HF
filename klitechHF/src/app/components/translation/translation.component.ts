@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { SynonymData } from 'src/app/models/synonym.model';
 import { Translation } from 'src/app/models/translation.model';
-import { SynonymService } from 'src/app/services/synonym.service';
 import { TranslationService } from 'src/app/services/translation.service';
 
 @Component({
@@ -10,11 +8,8 @@ import { TranslationService } from 'src/app/services/translation.service';
   styleUrls: ['./translation.component.css']
 })
 export class TranslationComponent {
-
   translationSource = '';
-  translationResult?: Translation = {
-    data: []
-  };
+  translationResult?: Translation;
   langCode = 'hu';
   private langs: Map<string, string> | null = null;
 
@@ -30,8 +25,8 @@ export class TranslationComponent {
       .translateText(this.translationSource, this.langCode)
       .subscribe({
         next: (response) => {
-          this.translationResult!.data = response;
-          console.log(this.translationResult!.data[0][0]);
+          this.translationResult! = response;
+          console.log(this.translationResult![0][0]);
         },
       });
   }

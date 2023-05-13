@@ -1,3 +1,1 @@
-export interface Translation {
-  data: string[];
-}
+export type Translation = string[]
