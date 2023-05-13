@@ -1,0 +1,27 @@
+<div class="container">
+    <div>
+      <h1>Klitech Synonym Dictionary</h1>
+      <form>
+        <textarea
+          class="textbox"
+          id="synonymSourceTextBox"
+          name="synonymSourceTextBox"
+          [(ngModel)]="synonymSearch"
+          placeholder="Enter word here"
+        ></textarea>
+      </form>
+    </div>
+    <div *ngIf="synonymData">
+      <h1>&nbsp;</h1>
+      <form>
+        <textarea
+          id="synonymResultTextBox"
+          name="synonymResultTextBox"
+          class="textbox"
+          placeholder="Synonyms"
+          >{{ synonymData.synonyms }}</textarea
+        >
+      </form>
+    </div>
+  </div>
+  <button class="btn" (click)="onSubmitSyn()">Find Synonyms</button>
