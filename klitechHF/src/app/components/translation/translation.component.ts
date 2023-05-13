@@ -11,7 +11,7 @@ export class TranslationComponent {
   translationSource = '';
   translationResult?: Translation;
   langCode = 'hu';
-  private langs: Map<string, string> | null = null;
+  langs: Map<string, string> | null = null;
 
   constructor(
     private translationService: TranslationService
@@ -26,7 +26,6 @@ export class TranslationComponent {
       .subscribe({
         next: (response) => {
           this.translationResult! = response;
-          console.log(this.translationResult![0][0]);
         },
       });
   }

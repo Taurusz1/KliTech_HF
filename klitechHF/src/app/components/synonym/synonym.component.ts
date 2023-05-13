@@ -18,7 +18,6 @@ export class SynonymComponent {
   onSubmitSyn() {
     this.synonymService.getSynonyms(this.synonymSearch).subscribe({
       next: (response) => {
-        console.log(response);
         this.synonymData = response;
       },
     });
