@@ -23,10 +23,10 @@ export class TranslationService {
       q: 'Error',
     },
   };
-  translateText(text: string, targetLang: string): Observable<string[]> {
+  translateText(text: string, sourceLang?: string, targetLang?: string): Observable<string[]> {
     this.options.body = {
-      from: 'auto',
-      to: 'hu',
+      from: sourceLang!,
+      to: targetLang!,
       e: '',
       q: text,
     };

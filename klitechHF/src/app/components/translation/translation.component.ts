@@ -10,19 +10,23 @@ import { TranslationService } from 'src/app/services/translation.service';
 export class TranslationComponent {
   translationSource = '';
   translationResult?: Translation;
-  langCode = 'hu';
-  langs: Map<string, string> | null = null;
+  langCodeFrom = '';
+  langCodeTo = '';
+  languages: Map<string, string> | null = null;
+  languageOptions?: string[];
 
   constructor(
     private translationService: TranslationService
   ) { }
-
   ngOnInit(): void {
     this.readFileIntoSet();
   }
   onSubmitTran() {
+    const sourceLang = this.languages?.get(this.langCodeFrom);
+    const targetLang = this.languages?.get(this.langCodeTo);
+    
     this.translationService
-      .translateText(this.translationSource, this.langCode)
+      .translateText(this.translationSource, sourceLang, targetLang)
       .subscribe({
         next: (response) => {
           this.translationResult! = response;
@@ -40,9 +44,10 @@ export class TranslationComponent {
       const [key, value] = line.split(': ');
   
       if (key && value) {
-        map.set(key, value);
+        map.set(value, key);
       }
     }
-    this.langs = map;
+    this.languages = map;
+    this.languageOptions = Array.from(map.keys());
   }
 }
