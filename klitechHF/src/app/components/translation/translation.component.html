@@ -11,7 +11,7 @@
         ></textarea>
         <div class="row">
           <label class="row-label">Source Language</label>
-          <select name="from_lang" class="lang-select" [(ngModel)]="langCodeFrom">
+          <select name="from_lang" class="lang-select" [(ngModel)]="langFrom">
             <option *ngFor="let option of languageOptions" [value]="option">{{ option }}</option>
           </select>
         </div>
@@ -38,7 +38,7 @@
         >
         <div class="row">
           <label class="row-label">Destination Language</label>
-          <select name="from_lang" class="lang-select" [(ngModel)]="langCodeTo">
+          <select name="from_lang" class="lang-select" [(ngModel)]="langTo">
             <option *ngFor="let option of languageOptions" [value]="option">{{ option }}</option>
           </select>
         </div>

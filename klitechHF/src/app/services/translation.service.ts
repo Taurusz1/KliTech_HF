@@ -7,8 +7,11 @@ import { Translation } from '../models/translation.model';
 @Injectable({
   providedIn: 'root',
 })
+//Implements Service for translation of text
 export class TranslationService {
   constructor(private http: HttpClient) {}
+
+  //Template for http body
   options = {
     method: 'POST',
     headers: new HttpHeaders({
@@ -23,6 +26,8 @@ export class TranslationService {
       q: 'Error',
     },
   };
+
+  //Calls translation endpoint with post request, returns Observalbe string array
   translateText(text: string, sourceLang?: string, targetLang?: string): Observable<string[]> {
     this.options.body = {
       from: sourceLang!,
@@ -35,17 +40,6 @@ export class TranslationService {
       this.options.body,
       {
         headers: this.options.headers,
-      }
-    );
-  }
-
-  getLanguages():Observable<string> {
-    return this.http.get<string>(
-      environment.TranslationURL + '/languages',
-      {
-        headers: new HttpHeaders()
-          .set(environment.XRapidAPIHostHeaderName, environment.TranslationHost)
-          .set(environment.XRapidAPIKeyHeaderName, environment.TranslationKey),
       }
     );
   }

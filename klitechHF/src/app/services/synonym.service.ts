@@ -7,9 +7,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
+//Implements Service for getting synonyms of words
 export class SynonymService {
   constructor(private http: HttpClient) {}
 
+  //Calls synonyms endpoint with get request, returns Observalbe SynonymData
   getSynonyms(inputWord: string): Observable<SynonymData> {
     return this.http.get<SynonymData>(
       environment.WordsAPIURL + inputWord + '/synonyms',
