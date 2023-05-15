@@ -22,13 +22,14 @@ export class TranslationComponent {
     this.readFileIntoSet();
   }
   onSubmitTran() {
-    const sourceLang = this.languages?.get(this.langCodeFrom);
-    const targetLang = this.languages?.get(this.langCodeTo);
-    
+    const sourceLang = this.languages?.get(this.langCodeFrom) ?? 'auto';
+    const targetLang = this.languages?.get(this.langCodeTo) ?? 'hu';
+    console.log(sourceLang, targetLang);
     this.translationService
       .translateText(this.translationSource, sourceLang, targetLang)
       .subscribe({
         next: (response) => {
+          console.log(response);
           this.translationResult! = response;
         },
       });
