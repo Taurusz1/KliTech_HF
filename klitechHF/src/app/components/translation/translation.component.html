@@ -1,48 +1,53 @@
 <div class="container">
-    <div>
-      <h1>Klitech Translate</h1>
-      <form>
-        <textarea
-          class="textbox"
-          id="sourceLangTextBox"
-          name="sourceLangTextBox"
-          [(ngModel)]="translationSource"
-          placeholder="Enter text here"
-        ></textarea>
-        <div class="row">
-          <label class="row-label">Source Language</label>
-          <select name="from_lang" class="lang-select" [(ngModel)]="langFrom">
-            <option *ngFor="let option of languageOptions" [value]="option">{{ option }}</option>
-          </select>
-        </div>
-      </form>
-    </div>
-    <div>
-      <h1>&nbsp;</h1>
-      <form>
-        <textarea
-          *ngIf="translationResult"
-          class="textbox"
-          id="destinationLangTextBox"
-          name="destinationLangTextBox"
-          placeholder="Translation"
-          >{{translationResult![0]}}</textarea
-        >
-        <textarea
-          *ngIf="!translationResult"
-          class="textbox"
-          id="destinationLangTextBox"
-          name="destinationLangTextBox"
-          placeholder="Translation"
-          >Translation</textarea
-        >
-        <div class="row">
-          <label class="row-label">Destination Language</label>
-          <select name="from_lang" class="lang-select" [(ngModel)]="langTo">
-            <option *ngFor="let option of languageOptions" [value]="option">{{ option }}</option>
-          </select>
-        </div>
-      </form>
-    </div>
+  <div>
+    <h1>Klitech Translate</h1>
+    <form>
+      <textarea
+        class="textbox"
+        id="sourceLangTextBox"
+        name="sourceLangTextBox"
+        [(ngModel)]="translationSource"
+        placeholder="Enter text here"
+      ></textarea>
+      <div class="row">
+        <label class="row-label">Source Language Automatic</label>
+        <select name="from_lang" class="lang-select" [(ngModel)]="langFrom">
+          <option *ngFor="let option of languageOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+    </form>
   </div>
-  <button class="btn" (click)="onSubmitTran()">Translate</button>
+  <div>
+    <h1>&nbsp;</h1>
+    <form>
+      <textarea
+        *ngIf="translationResult"
+        class="textbox"
+        id="destinationLangTextBox"
+        name="destinationLangTextBox"
+        placeholder="Translation"
+        >{{ translationResult![0] }}</textarea
+      >
+      <textarea
+        *ngIf="!translationResult"
+        class="textbox"
+        id="destinationLangTextBox"
+        name="destinationLangTextBox"
+        placeholder="Translation"
+      >
+Translation</textarea
+      >
+      <div class="row">
+        <label class="row-label">Choose Destination Language</label>
+        <select name="from_lang" class="lang-select" [(ngModel)]="langTo">
+          <option *ngFor="let option of languageOptions" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>
+<button class="btn" (click)="onSubmitTran()">Translate</button>
